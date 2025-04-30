@@ -211,9 +211,8 @@ root.geometry("500x700")
 tasks_data = load_tasks()
 routine = load_routine()
 
-# Não use ttkbootstrap aqui no calendário:
-cal = Calendar(root, selectmode="day", date_pattern="yyyy-mm-dd")
-cal.pack(pady=10)
+cal.bind("<<CalendarSelected>>", on_date_select)
+cal.bind("<<MonthChanged>>", lambda e: highlight_work_days())
 cal.bind("<<CalendarSelected>>", on_date_select)
 cal.bind("<<MonthChanged>>", lambda e: highlight_work_days())
 
